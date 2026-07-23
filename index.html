@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Aura — Music Player</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Space+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Blurred album art used as ambient background -->
+  <div class="bg-blur" id="bgBlur"></div>
+
+  <div class="app">
+    <div class="player-shell">
+
+      <!-- ===== PLAYER PANEL ===== -->
+      <section class="player glass">
+
+        <header class="player__header">
+          <div class="brand"><i class="fa-solid fa-headphones-simple"></i> Aura</div>
+          <button class="icon-btn" id="favBtn" aria-label="Add to favorites">
+            <i class="fa-regular fa-heart"></i>
+          </button>
+        </header>
+
+        <div class="cover-wrap">
+          <div class="cover-disc" id="coverDisc">
+            <img src="https://picsum.photos/seed/aura1/500/500" alt="Album cover" id="coverImg" class="cover-img">
+            <div class="cover-hole"></div>
+          </div>
+          <div class="cover-arm" id="coverArm"></div>
+        </div>
+
+        <div class="track-info">
+          <h2 class="track-title" id="trackTitle">Midnight Skyline</h2>
+          <p class="track-artist" id="trackArtist">Nova Sound</p>
+        </div>
+
+        <div class="progress-section">
+          <span class="time time--current" id="currentTime">0:00</span>
+          <div class="progress-bar" id="progressBar">
+            <div class="progress-bar__fill" id="progressFill"></div>
+            <div class="progress-bar__handle" id="progressHandle"></div>
+          </div>
+          <span class="time time--duration" id="durationTime">0:00</span>
+        </div>
+
+        <div class="controls">
+          <button class="ctrl-btn" id="shuffleBtn" aria-label="Shuffle" title="Shuffle (S)">
+            <i class="fa-solid fa-shuffle"></i>
+          </button>
+          <button class="ctrl-btn" id="prevBtn" aria-label="Previous" title="Previous (←)">
+            <i class="fa-solid fa-backward-step"></i>
+          </button>
+          <button class="ctrl-btn ctrl-btn--play" id="playBtn" aria-label="Play" title="Play / Pause (Space)">
+            <i class="fa-solid fa-play" id="playIcon"></i>
+          </button>
+          <button class="ctrl-btn" id="nextBtn" aria-label="Next" title="Next (→)">
+            <i class="fa-solid fa-forward-step"></i>
+          </button>
+          <button class="ctrl-btn" id="repeatBtn" aria-label="Repeat" title="Repeat (R)">
+            <i class="fa-solid fa-repeat"></i>
+            <span class="ctrl-btn__dot" id="repeatOneDot"></span>
+          </button>
+        </div>
+
+        <div class="volume-section">
+          <button class="icon-btn" id="muteBtn" aria-label="Mute / Unmute" title="Mute (M)">
+            <i class="fa-solid fa-volume-high" id="volIcon"></i>
+          </button>
+          <div class="volume-bar" id="volumeBar">
+            <div class="volume-bar__fill" id="volumeFill"></div>
+            <div class="volume-bar__handle" id="volumeHandle"></div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ===== PLAYLIST PANEL ===== -->
+      <aside class="playlist glass">
+
+        <div class="playlist__header">
+          <h3>Playlist</h3>
+          <div class="playlist__search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="searchInput" placeholder="Search songs or artists..." />
+          </div>
+        </div>
+
+        <div class="playlist__tabs">
+          <button class="tab-btn active" data-tab="all">All Songs</button>
+          <button class="tab-btn" data-tab="favorites">Favorites</button>
+          <button class="tab-btn" data-tab="recent">Recently Played</button>
+        </div>
+
+        <ul class="playlist__list" id="playlistList">
+          <!-- injected by JS -->
+        </ul>
+
+      </aside>
+
+    </div>
+  </div>
+
+  <audio id="audio" preload="metadata"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
